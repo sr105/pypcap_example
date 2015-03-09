@@ -69,7 +69,7 @@ def determine_packet_function(packet_data):
                       get_tcp_from_loopback,
                       get_tcp_from_ip]
     for fn in type_functions:
-        if fn(packet_data):
+        if fn(packet_data) is not None:
             if DEBUG: print 'Packet type:', fn.__name__.split('_')[-1]
             return fn
     return None
